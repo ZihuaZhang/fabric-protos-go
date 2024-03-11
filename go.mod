@@ -1,4 +1,4 @@
-module github.com/ZihuaZhang/redactable
+module github.com/ZihuaZhang/fabric-protos-go
 
 go 1.17
 
