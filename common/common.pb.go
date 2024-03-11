@@ -3,7 +3,8 @@
 
 package common
 
-import (
+import
+(
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -334,6 +335,8 @@ func (m *IdentifierHeader) GetNonce() []byte {
 	return nil
 }
 
+
+
 type Header struct {
 	ChannelHeader        []byte   `protobuf:"bytes,1,opt,name=channel_header,json=channelHeader,proto3" json:"channel_header,omitempty"`
 	SignatureHeader      []byte   `protobuf:"bytes,2,opt,name=signature_header,json=signatureHeader,proto3" json:"signature_header,omitempty"`
@@ -596,12 +599,24 @@ func (m *Payload) GetData() []byte {
 	return nil
 }
 
+type RedactMsg struct {
+	Pk         []byte `protobuf:"bytes,1,opt,name=pk,proto3" json:"pk,omitempty"`
+	Msp        []byte `protobuf:"bytes,2,opt,name=msp,proto3" json:"msp,omitempty"`
+	FameCipher []byte `protobuf:"bytes,3,opt,name=fame_cipher,json=fameCipher,proto3" json:"fame_cipher,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
 // Envelope wraps a Payload with a signature so that the message may be authenticated
 type Envelope struct {
 	// A marshaled Payload
 	Payload []byte `protobuf:"bytes,1,opt,name=payload,proto3" json:"payload,omitempty"`
 	// A signature by the creator specified in the Payload header
 	Signature            []byte   `protobuf:"bytes,2,opt,name=signature,proto3" json:"signature,omitempty"`
+	// transaction can be redacted or not
+	Redactable  bool
+	RedactMessage []byte
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
