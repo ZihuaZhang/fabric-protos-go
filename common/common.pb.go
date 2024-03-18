@@ -602,11 +602,56 @@ func (m *Payload) GetData() []byte {
 type RedactMsg struct {
 	Pk         []byte `protobuf:"bytes,1,opt,name=pk,proto3" json:"pk,omitempty"`
 	Msp        []byte `protobuf:"bytes,2,opt,name=msp,proto3" json:"msp,omitempty"`
-	FameCipher []byte `protobuf:"bytes,3,opt,name=fame_cipher,json=fameCipher,proto3" json:"fame_cipher,omitempty"`
+	FameCipher []byte `protobuf:"bytes,3,opt,name=fameCipher,proto3" json:"fameCipher,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
+func (m *RedactMsg) Reset()         { *m = RedactMsg{} }
+func (m *RedactMsg) String() string { return proto.CompactTextString(m) }
+func (*RedactMsg) ProtoMessage()    {}
+func (*RedactMsg) Descriptor() ([]byte, []int) {
+	return fileDescriptor_8f954d82c0b891f6, []int{8}
+}
+
+func (m *RedactMsg) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_RedactMsg.Unmarshal(m, b)
+}
+func (m *RedactMsg) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_RedactMsg.Marshal(b, m, deterministic)
+}
+func (m *RedactMsg) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_RedactMsg.Merge(m, src)
+}
+func (m *RedactMsg) XXX_Size() int {
+	return xxx_messageInfo_RedactMsg.Size(m)
+}
+func (m *RedactMsg) XXX_DiscardUnknown() {
+	xxx_messageInfo_RedactMsg.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_RedactMsg proto.InternalMessageInfo
+
+func (m *RedactMsg) GetPk() []byte {
+	if m != nil {
+		return m.Pk
+	}
+	return nil
+}
+
+func (m *RedactMsg) GetMsp() []byte {
+	if m != nil {
+		return m.Msp
+	}
+	return nil
+}
+func (x *RedactMsg) GetFameCipher() []byte {
+	if x != nil {
+		return x.FameCipher
+	}
+	return nil
+}
+
 
 // Envelope wraps a Payload with a signature so that the message may be authenticated
 type Envelope struct {
@@ -615,8 +660,8 @@ type Envelope struct {
 	// A signature by the creator specified in the Payload header
 	Signature            []byte   `protobuf:"bytes,2,opt,name=signature,proto3" json:"signature,omitempty"`
 	// transaction can be redacted or not
-	Redactable  bool
-	RedactMessage []byte
+	Redactable  bool   `protobuf:"varint,3,opt,name=redactable,proto3" json:"redactable,omitempty"`
+	RedactMessage []byte `protobuf:"bytes,4,opt,name=redactMessage,proto3" json:"redactMessage,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -657,6 +702,19 @@ func (m *Envelope) GetPayload() []byte {
 func (m *Envelope) GetSignature() []byte {
 	if m != nil {
 		return m.Signature
+	}
+	return nil
+}
+func (x *Envelope) GetRedactable() bool {
+	if x != nil {
+		return x.Redactable
+	}
+	return false
+}
+
+func (x *Envelope) GetRedactMessage() []byte {
+	if x != nil {
+		return x.RedactMessage
 	}
 	return nil
 }
