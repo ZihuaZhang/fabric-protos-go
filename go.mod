@@ -4,6 +4,7 @@ go 1.17
 
 require (
 	github.com/golang/protobuf v1.5.4
+	github.com/hyperledger/fabric-protos-go v0.3.3
 	google.golang.org/grpc v1.56.3
 	google.golang.org/protobuf v1.33.0
 )
