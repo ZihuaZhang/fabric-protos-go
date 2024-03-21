@@ -215,9 +215,9 @@ func (BlockMetadataIndex) EnumDescriptor() ([]byte, []int) {
 
 // LastConfig is the encoded value for the Metadata message which is encoded in the LAST_CONFIGURATION block metadata index
 type LastConfig struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
+	XXX_state         protoimpl.MessageState
+	XXX_sizeCache     protoimpl.SizeCache
+	XXX_unknownFields protoimpl.UnknownFields
 
 	Index uint64 `protobuf:"varint,1,opt,name=index,proto3" json:"index,omitempty"`
 }
@@ -263,9 +263,9 @@ func (x *LastConfig) GetIndex() uint64 {
 
 // Metadata is a common structure to be used to encode block metadata
 type Metadata struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
+	XXX_state         protoimpl.MessageState
+	XXX_sizeCache     protoimpl.SizeCache
+	XXX_unknownFields protoimpl.UnknownFields
 
 	Value      []byte               `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
 	Signatures []*MetadataSignature `protobuf:"bytes,2,rep,name=signatures,proto3" json:"signatures,omitempty"`
@@ -318,9 +318,9 @@ func (x *Metadata) GetSignatures() []*MetadataSignature {
 }
 
 type MetadataSignature struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
+	XXX_state         protoimpl.MessageState
+	XXX_sizeCache     protoimpl.SizeCache
+	XXX_unknownFields protoimpl.UnknownFields
 
 	SignatureHeader  []byte `protobuf:"bytes,1,opt,name=signature_header,json=signatureHeader,proto3" json:"signature_header,omitempty"`    // An encoded SignatureHeader
 	Signature        []byte `protobuf:"bytes,2,opt,name=signature,proto3" json:"signature,omitempty"`                                       // The signature over the concatenation of the Metadata value bytes, signatureHeader, and block header
@@ -382,9 +382,9 @@ func (x *MetadataSignature) GetIdentifierHeader() []byte {
 
 // IdentifierHeader is used as an alternative to a SignatureHeader when the creator can be referenced by id
 type IdentifierHeader struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
+	XXX_state         protoimpl.MessageState
+	XXX_sizeCache     protoimpl.SizeCache
+	XXX_unknownFields protoimpl.UnknownFields
 
 	Identifier uint32 `protobuf:"varint,1,opt,name=identifier,proto3" json:"identifier,omitempty"` // A unique identifier that represents the creator of the message
 	Nonce      []byte `protobuf:"bytes,2,opt,name=nonce,proto3" json:"nonce,omitempty"`            // Arbitrary number that may only be used once. Can be used to detect replay attacks.
@@ -437,9 +437,9 @@ func (x *IdentifierHeader) GetNonce() []byte {
 }
 
 type Header struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
+	XXX_state         protoimpl.MessageState
+	XXX_sizeCache     protoimpl.SizeCache
+	XXX_unknownFields protoimpl.UnknownFields
 
 	ChannelHeader   []byte `protobuf:"bytes,1,opt,name=channel_header,json=channelHeader,proto3" json:"channel_header,omitempty"`
 	SignatureHeader []byte `protobuf:"bytes,2,opt,name=signature_header,json=signatureHeader,proto3" json:"signature_header,omitempty"`
@@ -493,9 +493,9 @@ func (x *Header) GetSignatureHeader() []byte {
 
 // Header is a generic replay prevention and identity message to include in a signed payload
 type ChannelHeader struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
+	XXX_state         protoimpl.MessageState
+	XXX_sizeCache     protoimpl.SizeCache
+	XXX_unknownFields protoimpl.UnknownFields
 
 	Type int32 `protobuf:"varint,1,opt,name=type,proto3" json:"type,omitempty"` // Header types 0-10000 are reserved and defined by HeaderType
 	// Version indicates message protocol version
@@ -616,9 +616,9 @@ func (x *ChannelHeader) GetTlsCertHash() []byte {
 }
 
 type SignatureHeader struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
+	XXX_state         protoimpl.MessageState
+	XXX_sizeCache     protoimpl.SizeCache
+	XXX_unknownFields protoimpl.UnknownFields
 
 	// Creator of the message, a marshaled msp.SerializedIdentity
 	Creator []byte `protobuf:"bytes,1,opt,name=creator,proto3" json:"creator,omitempty"`
@@ -674,9 +674,9 @@ func (x *SignatureHeader) GetNonce() []byte {
 
 // Payload is the message contents (and header to allow for signing)
 type Payload struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
+	XXX_state         protoimpl.MessageState
+	XXX_sizeCache     protoimpl.SizeCache
+	XXX_unknownFields protoimpl.UnknownFields
 
 	// Header is included to provide identity and prevent replay
 	Header *Header `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
@@ -732,9 +732,9 @@ func (x *Payload) GetData() []byte {
 
 // Envelope wraps a Payload with a signature so that the message may be authenticated
 type Envelope struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
+	XXX_state         protoimpl.MessageState
+	XXX_sizeCache     protoimpl.SizeCache
+	XXX_unknownFields protoimpl.UnknownFields
 
 	// A marshaled Payload
 	Payload []byte `protobuf:"bytes,1,opt,name=payload,proto3" json:"payload,omitempty"`
@@ -805,9 +805,9 @@ func (x *Envelope) GetRedactMessage() []byte {
 }
 
 type RedactMsg struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
+	XXX_state         protoimpl.MessageState
+	XXX_sizeCache     protoimpl.SizeCache
+	XXX_unknownFields protoimpl.UnknownFields
 
 	Pk         []byte `protobuf:"bytes,1,opt,name=pk,proto3" json:"pk,omitempty"`
 	Msp        []byte `protobuf:"bytes,2,opt,name=msp,proto3" json:"msp,omitempty"`
@@ -872,9 +872,9 @@ func (x *RedactMsg) GetFameCipher() []byte {
 // in the BlockHeader.  This makes it natural and obvious that the Data is included in the hash, but
 // the Metadata is not.
 type Block struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
+	XXX_state         protoimpl.MessageState
+	XXX_sizeCache     protoimpl.SizeCache
+	XXX_unknownFields protoimpl.UnknownFields
 
 	Header   *BlockHeader   `protobuf:"bytes,1,opt,name=header,proto3" json:"header,omitempty"`
 	Data     *BlockData     `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
@@ -938,9 +938,9 @@ func (x *Block) GetMetadata() *BlockMetadata {
 // The block header is hashed using the configured chain hashing algorithm
 // over the ASN.1 encoding of the BlockHeader
 type BlockHeader struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
+	XXX_state         protoimpl.MessageState
+	XXX_sizeCache     protoimpl.SizeCache
+	XXX_unknownFields protoimpl.UnknownFields
 
 	Number       uint64 `protobuf:"varint,1,opt,name=number,proto3" json:"number,omitempty"`                                // The position in the blockchain
 	PreviousHash []byte `protobuf:"bytes,2,opt,name=previous_hash,json=previousHash,proto3" json:"previous_hash,omitempty"` // The hash of the previous block header
@@ -1001,9 +1001,9 @@ func (x *BlockHeader) GetDataHash() []byte {
 }
 
 type BlockData struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
+	XXX_state         protoimpl.MessageState
+	XXX_sizeCache     protoimpl.SizeCache
+	XXX_unknownFields protoimpl.UnknownFields
 
 	Data [][]byte `protobuf:"bytes,1,rep,name=data,proto3" json:"data,omitempty"`
 }
@@ -1048,9 +1048,9 @@ func (x *BlockData) GetData() [][]byte {
 }
 
 type BlockMetadata struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
+	XXX_state         protoimpl.MessageState
+	XXX_sizeCache     protoimpl.SizeCache
+	XXX_unknownFields protoimpl.UnknownFields
 
 	Metadata [][]byte `protobuf:"bytes,1,rep,name=metadata,proto3" json:"metadata,omitempty"`
 }
@@ -1096,9 +1096,9 @@ func (x *BlockMetadata) GetMetadata() [][]byte {
 
 // OrdererBlockMetadata defines metadata that is set by the ordering service.
 type OrdererBlockMetadata struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
+	XXX_state         protoimpl.MessageState
+	XXX_sizeCache     protoimpl.SizeCache
+	XXX_unknownFields protoimpl.UnknownFields
 
 	LastConfig        *LastConfig `protobuf:"bytes,1,opt,name=last_config,json=lastConfig,proto3" json:"last_config,omitempty"`
 	ConsenterMetadata []byte      `protobuf:"bytes,2,opt,name=consenter_metadata,json=consenterMetadata,proto3" json:"consenter_metadata,omitempty"`
@@ -1351,11 +1351,11 @@ func file_common_common_proto_init() {
 		file_common_common_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*LastConfig); i {
 			case 0:
-				return &v.state
+				return &v.XXX_state
 			case 1:
-				return &v.sizeCache
+				return &v.XXX_sizeCache
 			case 2:
-				return &v.unknownFields
+				return &v.XXX_unknownFields
 			default:
 				return nil
 			}
@@ -1363,11 +1363,11 @@ func file_common_common_proto_init() {
 		file_common_common_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Metadata); i {
 			case 0:
-				return &v.state
+				return &v.XXX_state
 			case 1:
-				return &v.sizeCache
+				return &v.XXX_sizeCache
 			case 2:
-				return &v.unknownFields
+				return &v.XXX_unknownFields
 			default:
 				return nil
 			}
@@ -1375,11 +1375,11 @@ func file_common_common_proto_init() {
 		file_common_common_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*MetadataSignature); i {
 			case 0:
-				return &v.state
+				return &v.XXX_state
 			case 1:
-				return &v.sizeCache
+				return &v.XXX_sizeCache
 			case 2:
-				return &v.unknownFields
+				return &v.XXX_unknownFields
 			default:
 				return nil
 			}
@@ -1387,11 +1387,11 @@ func file_common_common_proto_init() {
 		file_common_common_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*IdentifierHeader); i {
 			case 0:
-				return &v.state
+				return &v.XXX_state
 			case 1:
-				return &v.sizeCache
+				return &v.XXX_sizeCache
 			case 2:
-				return &v.unknownFields
+				return &v.XXX_unknownFields
 			default:
 				return nil
 			}
@@ -1399,11 +1399,11 @@ func file_common_common_proto_init() {
 		file_common_common_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Header); i {
 			case 0:
-				return &v.state
+				return &v.XXX_state
 			case 1:
-				return &v.sizeCache
+				return &v.XXX_sizeCache
 			case 2:
-				return &v.unknownFields
+				return &v.XXX_unknownFields
 			default:
 				return nil
 			}
@@ -1411,11 +1411,11 @@ func file_common_common_proto_init() {
 		file_common_common_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*ChannelHeader); i {
 			case 0:
-				return &v.state
+				return &v.XXX_state
 			case 1:
-				return &v.sizeCache
+				return &v.XXX_sizeCache
 			case 2:
-				return &v.unknownFields
+				return &v.XXX_unknownFields
 			default:
 				return nil
 			}
@@ -1423,11 +1423,11 @@ func file_common_common_proto_init() {
 		file_common_common_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*SignatureHeader); i {
 			case 0:
-				return &v.state
+				return &v.XXX_state
 			case 1:
-				return &v.sizeCache
+				return &v.XXX_sizeCache
 			case 2:
-				return &v.unknownFields
+				return &v.XXX_unknownFields
 			default:
 				return nil
 			}
@@ -1435,11 +1435,11 @@ func file_common_common_proto_init() {
 		file_common_common_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Payload); i {
 			case 0:
-				return &v.state
+				return &v.XXX_state
 			case 1:
-				return &v.sizeCache
+				return &v.XXX_sizeCache
 			case 2:
-				return &v.unknownFields
+				return &v.XXX_unknownFields
 			default:
 				return nil
 			}
@@ -1447,11 +1447,11 @@ func file_common_common_proto_init() {
 		file_common_common_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Envelope); i {
 			case 0:
-				return &v.state
+				return &v.XXX_state
 			case 1:
-				return &v.sizeCache
+				return &v.XXX_sizeCache
 			case 2:
-				return &v.unknownFields
+				return &v.XXX_unknownFields
 			default:
 				return nil
 			}
@@ -1459,11 +1459,11 @@ func file_common_common_proto_init() {
 		file_common_common_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*RedactMsg); i {
 			case 0:
-				return &v.state
+				return &v.XXX_state
 			case 1:
-				return &v.sizeCache
+				return &v.XXX_sizeCache
 			case 2:
-				return &v.unknownFields
+				return &v.XXX_unknownFields
 			default:
 				return nil
 			}
@@ -1471,11 +1471,11 @@ func file_common_common_proto_init() {
 		file_common_common_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*Block); i {
 			case 0:
-				return &v.state
+				return &v.XXX_state
 			case 1:
-				return &v.sizeCache
+				return &v.XXX_sizeCache
 			case 2:
-				return &v.unknownFields
+				return &v.XXX_unknownFields
 			default:
 				return nil
 			}
@@ -1483,11 +1483,11 @@ func file_common_common_proto_init() {
 		file_common_common_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*BlockHeader); i {
 			case 0:
-				return &v.state
+				return &v.XXX_state
 			case 1:
-				return &v.sizeCache
+				return &v.XXX_sizeCache
 			case 2:
-				return &v.unknownFields
+				return &v.XXX_unknownFields
 			default:
 				return nil
 			}
@@ -1495,11 +1495,11 @@ func file_common_common_proto_init() {
 		file_common_common_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*BlockData); i {
 			case 0:
-				return &v.state
+				return &v.XXX_state
 			case 1:
-				return &v.sizeCache
+				return &v.XXX_sizeCache
 			case 2:
-				return &v.unknownFields
+				return &v.XXX_unknownFields
 			default:
 				return nil
 			}
@@ -1507,11 +1507,11 @@ func file_common_common_proto_init() {
 		file_common_common_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*BlockMetadata); i {
 			case 0:
-				return &v.state
+				return &v.XXX_state
 			case 1:
-				return &v.sizeCache
+				return &v.XXX_sizeCache
 			case 2:
-				return &v.unknownFields
+				return &v.XXX_unknownFields
 			default:
 				return nil
 			}
@@ -1519,11 +1519,11 @@ func file_common_common_proto_init() {
 		file_common_common_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*OrdererBlockMetadata); i {
 			case 0:
-				return &v.state
+				return &v.XXX_state
 			case 1:
-				return &v.sizeCache
+				return &v.XXX_sizeCache
 			case 2:
-				return &v.unknownFields
+				return &v.XXX_unknownFields
 			default:
 				return nil
 			}
